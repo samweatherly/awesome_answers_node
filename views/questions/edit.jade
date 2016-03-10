@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  h1 Update Question
+  form(action="/questions/#{question._id}?_method=patch" method="POST")
+    .form-group(class="#{errors.title ? 'has-error' : ''}")
+      label(for="title") Title
+      input(type="text" id="title" name="title" class="form-control" value=question.title)
+      if errors.title
+        .help-block= errors.title
+    .form-group
+      label(for="body") Body
+      textarea(id="body" name="body" class="form-control")= question.body
+    input(type="submit" value="Update Question" class="btn btn-primary")

@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+  h1= question.title
+  p= question.body
+
+  a(href="/questions/#{question._id}/edit") Edit
+  form(action="/questions/#{question.id}?_method=delete" method="POST")
+    input(type="submit" value="Delete")

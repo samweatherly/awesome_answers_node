@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  h1 Create New Question
+  form(action="/questions" method="POST")
+    .form-group(class="#{errors.title ? 'has-error' : ''}")
+      label(for="title") Title
+      input(type="text" id="title" name="title" class="form-control")
+      if errors.title
+        .help-block= errors.title
+    .form-group
+      label(for="body") Body
+      textarea(id="body" name="body" class="form-control")
+    input(type="submit" value="Create Question" class="btn btn-primary")
